@@ -11,6 +11,9 @@ public class Board {
 		this.columns = columns;
 		pieces = new Piece[rows][columns];
 	}
+	//*NOTA*
+	// Ao instanciar o tabuleiro, automaticamente instancio a
+	// a matriz de peças atraves do construtor.
 	public int getRows() {
 		return rows;
 	}
@@ -29,4 +32,12 @@ public class Board {
 	public Piece piece(Position position) {
 		return pieces[position.getRow()][position.getColumn()];
 	}
+	public void placePiece(Piece piece, Position position) {
+		pieces[position.getRow()][position.getColumn()] = piece;
+		piece.position = position;
+	}
+	//*NOTA*
+	// Este metodo será usado para movimentar as peças, pois sua
+	// logica permite que eu acesse a posição da peça e que eu
+	// altere essa posição utilizando outra como argumento.
 }
