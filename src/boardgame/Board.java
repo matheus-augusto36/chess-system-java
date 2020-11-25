@@ -17,6 +17,7 @@ public class Board {
 	//*NOTA*
 	// Ao instanciar o tabuleiro, automaticamente instancio a
 	// a matriz de peças atraves do construtor.
+	
 	public int getRows() {
 		return rows;
 	}
@@ -44,8 +45,8 @@ public class Board {
 	}
 	//*NOTA*
 	// Este metodo será usado para movimentar as peças, pois sua
-	// logica permite que eu acesse a posição da peça e que eu
-	// altere essa posição utilizando outra como argumento.
+	// logica permite que eu acesse uma casa do tabuleiro e que eu
+	// mova uma peça para essa casa, atraves do "position".
 	
 	private boolean positionExists(int row, int column) {
 		return row >=0 && row< rows && column >=0 && column < columns;

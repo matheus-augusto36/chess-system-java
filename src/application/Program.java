@@ -1,6 +1,7 @@
 package application;
 
 import chess.ChessMatch;
+import chess.pieces.King;
 
 public class Program {
 
@@ -9,5 +10,4 @@ public class Program {
 		UI.printBoard(chessMatch.getPieces());
 
 	}
-
 }
