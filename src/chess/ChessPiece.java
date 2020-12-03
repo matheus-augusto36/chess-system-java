@@ -7,6 +7,8 @@ import boardgame.Position;
 public abstract class ChessPiece extends Piece{
 	
 	private Color color;
+  //protected Position position;
+  //private Board board;
 
 	public ChessPiece(Board board, Color color) {
 		super(board);

@@ -26,10 +26,14 @@ public class ChessPosition {
 	protected Position toPosition() {
 		return new Position(8 - row, column - 'a');
 	}
+	//*NOTA*
+	// Este metodo converte o ChessPosition para Position.
 	
 	protected static ChessPosition fromPosition(Position position) {
 		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
 	}
+	//*NOTA
+	// Este metodo faz o contrario, pois converte Position para ChessPosition(char).
 	
 	@Override
 	public String toString() {

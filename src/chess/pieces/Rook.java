@@ -61,4 +61,10 @@ public class Rook extends ChessPiece{
 		}
 		return mat;
 	}
+	//*RESUMO DO METODO*
+	// O método irá percorrer o tabuleiro(que foi adaptada para uma matriz
+	// de booleanos), e enquanto nao houver peça na posição e ela existir, 
+	// ele irá tornar as posições percorridas positivas. Se houver alguma
+	// peça inimiga, ele irá tornar a posiçao desta peça positiva e irá parar.
+	// Este método pode variar de acordo com as especificidades de cada peça.
 }

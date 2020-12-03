@@ -1,6 +1,12 @@
 package boardgame;
 
 public class Position {
+	//*NOTA*
+	// Esta classe será uma especie de intermediario entre
+	// o programador e a matriz do tabuleiro(pieces), pois 
+	// ela "fala a mesma lingua que a matriz 'pieces'(linhas
+	// e colunas)", permitindo comunicações e operaçoes.
+	
 	private int row;
 	private int column;
 	
