@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
@@ -11,6 +14,12 @@ public class ChessMatch {
 	private Board board;
 	private int turn;
 	private Color currentPlayer;
+	private List<Piece> piecesOnTheBoard = new ArrayList<>();
+	private List<Piece> capturedPieces = new ArrayList<>();
+	//*nota*
+	// Esta classe possui "turno" e "jogador atual", que serão usados
+	// para a criação de metodos capazes de gerenciar a troca de turnos
+	// entre os dois jogadores.
 	
 	public ChessMatch() {
 		board = new Board(8, 8);
@@ -62,18 +71,26 @@ public class ChessMatch {
 		return (ChessPiece)capturedPiece;
 	}
 	//*NOTA*
-	// Este método irá realizar uma captura de peça inimiga.
+	// Este método irá realizar uma captura de peça inimiga, utilizando
+	// o método auxiliar "makeMove()".
 	
 	private Piece makeMove(Position source, Position target) {
 		Piece p = board.removePiece(source);
 		Piece capturedPiece = board.removePiece(target);
 		board.placePiece(p, target);
+		
+		if(capturedPiece != null) {
+			piecesOnTheBoard.remove(capturedPiece);
+			capturedPieces.add(capturedPiece);
+		}
 		return capturedPiece;
 	}
 	//*NOTA*
 	// Este metodo primeiramente remove a peça de origem e de
 	// destino(peça capturada), e depois adiciona a peça de origem no lugar 
-	// da peça capturada.
+	// da peça capturada. Alem disso, ele tambem remove a peça capturada da
+	// lista de peças do tabuleiro, e adiciona esta peça na lista de peças 
+	// capturadas.
 	
 	public void validateSourcePosition(Position position) {
 		if(!board.thereIsAPiece(position)) {
@@ -89,7 +106,8 @@ public class ChessMatch {
 	//*NOTA* 
 	// Este método possui a função de verificar se alguma peça existe em
 	// determinada posição, e se existir, verifica se existem possiveis 
-	// jogadas para esta peça.
+	// jogadas para esta peça, alem de verificar se a peça selecionada 
+	// pertence ao jogador.
 	
 	private void validateTargetPosition(Position source, Position target) {
 		if(!board.piece(source).possibleMove(target)) {
