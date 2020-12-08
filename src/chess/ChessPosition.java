@@ -30,7 +30,7 @@ public class ChessPosition {
 	// Este metodo converte o ChessPosition para Position.
 	
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow());
 	}
 	//*NOTA
 	// Este metodo faz o contrario, pois converte Position para ChessPosition(char).

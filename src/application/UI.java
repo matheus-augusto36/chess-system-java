@@ -48,12 +48,13 @@ public class UI {
 			throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8");
 		}
 	}
-	//*NOTA*
-	// Este metodo irá criar uma ChessPosition. Primeiramente, será 
-	// feita uma entrada de dados(linha = "a" até "h" e coluna = 1 a 8)
-	// como argumento, e esses argumentos serao recortados e serao 
-	// atribuidos às variaveis column e row. Estas variaveis serao usadas
-	// para instanciar um ChessPosition atraves do construtor.
+	/*NOTA*
+	 *Este metodo irá criar uma ChessPosition. Primeiramente, será 
+	 *feita uma entrada de dados(linha = "a" até "h" e coluna = 1 a 8)
+	 *como argumento, e esses argumentos serao recortados e serao 
+	 *atribuidos às variaveis column e row. Estas variaveis serao usadas
+	 *para instanciar um ChessPosition atraves do construtor.
+	 */
 	
 	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
@@ -61,6 +62,9 @@ public class UI {
 		System.out.println();
 		System.out.println("Turn: " + chessMatch.getTurn());
 		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+		if(chessMatch.getCheck() == true) {
+			System.out.println("CHECK!");
+		}
 	}
 	
 	public static void printBoard(ChessPiece[][] pieces) {
@@ -73,9 +77,10 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 	}
-	// Este método irá percorrer a matriz "pieces"(contida em Board)
-	// e irá imprimir todas as peças contidas nela.
-	
+	/* 
+	 *Este método irá percorrer a matriz "pieces"(contida em Board)
+	 *e irá imprimir todas as peças contidas nela.
+	 */
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
 		for(int i=0; i<pieces.length; i++) {
 			System.out.print((8-i) + " ");
@@ -86,9 +91,10 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 	}
-	//*NOTA*
-	//*SOBRECARGA* -> A função deste método é imprimir o tabuleiro, porem
-	// imprimindo tambem os possiveis movimentos para as peças.
+	/*
+     **SOBRECARGA* -> A função deste método é imprimir o tabuleiro, porem
+	 *imprimindo tambem os possiveis movimentos para as peças.
+	 */
 	
 	private static void printPiece(ChessPiece piece, boolean backGround) {
 		if(backGround == true) {
@@ -107,12 +113,12 @@ public class UI {
 		}
 		System.out.print(" ");
 	}
-	//*NOTA*
-	// Se a peça for nula(nao existir), será impresso um "-".
-	// Senao, a inicial da peça será imprimida com seu fundo colorido.
-	// O espaço em branco serve para impedir que as peças fiquem grudadas 
-	// umas nas outras.
-	
+	/*
+	 *Se a peça for nula(nao existir), será impresso um "-".
+	 *Senao, a inicial da peça será imprimida com seu fundo colorido.
+	 *O espaço em branco serve para impedir que as peças fiquem grudadas 
+	 *umas nas outras.
+	 */
 	private static void printCapturedPieces(List<ChessPiece> capturedPieces) {
 		List<ChessPiece> white = capturedPieces.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
 		List<ChessPiece> black = capturedPieces.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
@@ -126,8 +132,10 @@ public class UI {
 		System.out.println(Arrays.toString(black.toArray()));
 		System.out.print(ANSI_RESET);
 	}
-	//*NOTA*
-	// Este método recebe uma lista com todas as peças capturadas, e faz uma 
-	// filtragem, armazenando as peças brancas em uma lista, e as pretas em outra.
-	// Por fim, as listas sao imprimidas na tela durante a partida.
+	 /* Este método recebe uma lista com todas as peças capturadas, e faz uma 
+	 * filtragem, armazenando as peças brancas em uma lista, e as pretas em outra.
+	 * Por fim, as listas sao imprimidas na tela durante a partida.
+	 * 
+	 */
 }
+
